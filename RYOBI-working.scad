@@ -1,0 +1,449 @@
+
+
+
+include <OPSC-base.scad>
+
+
+
+
+OPSCbuild(shift=200);
+
+// ZZZZ
+// Description
+module draw1(){
+    color="green";
+    //drawRyobiBattery(color,tabs=true);
+    //#drawRyobiBatteryV1(color);
+    //drawRyobiBattery(color,clearance=1.5,tabs=true);
+    drawRyobiBattery(color);
+    
+}
+
+// ZZZZ
+// Description
+module draw2(){
+    color="orange";
+    
+}
+
+// ZZZZ
+// Description
+module draw3(){
+    color="yellow";
+    
+}
+
+// ZZZZ
+// Description
+module draw4(){
+    color="green";
+    
+}
+
+// ZZZZ
+// Description
+module draw5(){
+    color="blue";
+    
+}
+
+// ZZZZ
+// Description
+module draw6(){
+    color="purple";
+    
+}
+
+// ZZZZ
+// Description
+module draw7(){
+    color="gray";
+    
+}
+
+// ZZZZ
+// Description
+module draw8(){
+    color="white";
+}
+
+// ZZZZ
+// Description
+module draw9(){
+    color="gray";
+    //translate([0,0,30]){
+    translate([0,0,0]){
+        
+        difference(){
+            //test Dimensions
+                testWidth = 50;
+                testHeight = 50;
+                testDepth = 50;
+                testX = -testWidth/2-17;
+                testY = 0;
+                testZ = 12+testDepth;
+                oi("cubeRounded",x=testX,y=testY,z=testZ,width=testWidth,height=testHeight,depth=testDepth,color=color);
+                drawRyobiBattery(color);
+                screwTopWidth = 0;
+                screwTopHeight = 0;
+                screwTopDepth = 0;
+                screwTopX = -35;
+                screwTopY = -18;
+                screwTopZ = testDepth-3;
+                oi("holeM3",x=screwTopX,y=screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
+                oi("holeM3",x=screwTopX,y=-screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
+                #oi("hole",rad=12.5,x=screwTopX,y=0,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
+        }
+    }
+}
+
+// ZZZZ
+// Description
+module draw10(){
+    color="pink";
+    
+    translate([0,0,30]){
+    //translate([0,0,00]){
+        union(){
+            difference(){
+                //test Dimensions
+                testWidth = 90;
+                testHeight = 85-7;
+                testDepth = 12;
+                testX = -testWidth/2-17;
+                testY = 0;
+                testZ = testDepth+0.5;
+                oi("cubeRounded",x=testX,y=testY,z=testZ,width=testWidth,height=testHeight,depth=testDepth,color=color);
+                drawRyobiBattery(color);
+                //screwTop Dimensions
+                screwTopWidth = 0;
+                screwTopHeight = 0;
+                screwTopDepth = 0;
+                screwTopX = -35;
+                screwTopY = -18;
+                screwTopZ = testDepth-3;
+                oi("countersunkM3",x=screwTopX,y=screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color,rotY=180);
+                oi("holeM3",x=screwTopX,y=screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
+                oi("countersunkM3",x=screwTopX,y=-screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color,rotY=180);
+                oi("holeM3",x=screwTopX,y=-screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
+                
+                }
+            drawRyobiBattery(color, tabs=true);    
+        }
+    }
+    
+    
+}
+
+
+
+module test(){
+    //OPSCInsert("OSPCHole",100,0,0);
+    //OPSCInsert("holeM3");
+    //OPSCInsert("OPSCHoleSlot",x=50,rad=5,rotZ=45);
+    //OPSCInsert("M3SocketHeadFull",0,0,0);
+    //OPSCInsert("M3SocketHead",0,0,0,length=25);
+    //OPSCInsert("cubeRounded",width=20,height=20,depth=6,rad=5);
+   //OPSCInsert("cylinder",rad=20,depth=6); //OPSCInsert("cube",width=20,height=20,depth=6,rad=5,alpha=0.3,color="red");
+    
+}
+
+module ZZZZinsert(item,x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=0,width=0,height=0,depth=0,rad=0,color="gray",alpha=1,clearance=0,offset=0){
+    color(color,alpha){
+            translate([x,y,z]){
+                rotate([rotX,rotY,rotZ]){    
+                    if(item=="OPSCtest"){
+                }
+            }
+        }
+    }
+}
+
+
+//////DEPRECATED
+module drawRyobiBatteryV1(color, tabs=false){
+    batteryBaseHeight = 76;
+    if(!tabs){
+        union(){
+            //batteryBase Dimensions
+            batteryBaseWidth = 135;
+            //batteryBaseHeight = 76;
+            batteryBaseDepth = 35;
+            batteryBaseX = -batteryBaseWidth/2;
+            batteryBaseY = 0;
+            batteryBaseZ = 0;
+            oi("cube",x=batteryBaseX,y=batteryBaseY,z=batteryBaseZ,width=batteryBaseWidth,height=batteryBaseHeight,depth=batteryBaseDepth,color=color);
+        
+            baseBumpShift=22;
+            //baseBump Dimensions
+            baseBumpWidth = 60;
+            baseBumpHeight = 62;
+            baseBumpDepth = 9;
+            baseBumpX = -baseBumpWidth/2-baseBumpShift;
+            baseBumpY = 0;
+            baseBumpZ = baseBumpDepth;
+            oi("cube",x=baseBumpX,y=baseBumpY,z=baseBumpZ,width=baseBumpWidth,height=baseBumpHeight,depth=baseBumpDepth,color=color);
+            
+            //batteryClipClearance Dimensions
+            batteryClipClearanceWidth = 30;
+            batteryClipClearanceHeight = 72;
+            batteryClipClearanceDepth = baseBumpDepth;
+            batteryClipClearanceX = -batteryClipClearanceWidth/2-baseBumpShift-22;
+            batteryClipClearanceY = 0;
+            batteryClipClearanceZ = baseBumpZ;
+            oi("cube",x=batteryClipClearanceX,y=batteryClipClearanceY,z=batteryClipClearanceZ,width=batteryClipClearanceWidth,height=batteryClipClearanceHeight,depth=batteryClipClearanceDepth,color=color);
+            
+            
+            //stemSquare Dimensions
+            stemSquareWidth = 22;
+            stemSquareHeight = 28;
+            stemSquareDepth = 44;
+            stemSquareX = -stemSquareHeight/2-baseBumpShift-stemSquareWidth/2;
+            stemSquareY = 0;
+            stemSquareZ = baseBumpDepth+stemSquareDepth;
+            oi("cube",x=stemSquareX,y=stemSquareY,z=stemSquareZ,width=stemSquareWidth,height=stemSquareHeight,depth=stemSquareDepth,color=color);
+            //stemRound Dimensions
+            stemRoundDiameter = stemSquareHeight;
+            stemRoundDepth = stemSquareDepth;
+            stemRoundX = -stemRoundDiameter/2-baseBumpShift;
+            stemRoundY = 0;
+            stemRoundZ = stemSquareZ;
+            oi("cylinder",x=stemRoundX,y=stemRoundY,z=stemRoundZ,rad=stemRoundDiameter/2,depth=stemRoundDepth,color=color);
+        }
+    }
+    if(tabs){
+        //tabLeft Dimensions
+        difference(){
+            tabLeftWidth = 20;
+            tabLeftHeight = 6;
+            tabLeftDepth = 3.5;
+            tabLeftX = -tabLeftWidth/2-46;
+            tabLeftY = -(batteryBaseHeight/2-tabLeftHeight/2);
+            tabLeftZ = tabLeftDepth;
+            oi("cube",x=tabLeftX,y=tabLeftY,z=tabLeftZ,width=tabLeftWidth,height=tabLeftHeight,depth=tabLeftDepth,color=color);
+            
+            tabCutoutShift = 11;
+            //tabCutoutOne Dimensions
+            tabCutoutOneWidth = 2;
+            tabCutoutOneHeight = 3;
+            tabCutoutOneDepth = tabLeftDepth;
+            tabCutoutOneX = tabLeftX+tabCutoutShift/2;
+            tabCutoutOneY = (tabLeftY+(tabLeftHeight-tabCutoutOneHeight)/2);
+            tabCutoutOneZ = tabLeftZ;
+            oi("cube",x=tabCutoutOneX,y=tabCutoutOneY,z=tabCutoutOneZ,width=tabCutoutOneWidth,height=tabCutoutOneHeight,depth=tabCutoutOneDepth,color=color);
+            //tabCutoutTwo Dimensions
+            tabCutoutTwoWidth = tabCutoutOneWidth;
+            tabCutoutTwoHeight = tabCutoutOneHeight;
+            tabCutoutTwoDepth = tabCutoutOneDepth;
+            tabCutoutTwoX = tabLeftX-tabCutoutShift/2;
+            tabCutoutTwoY = tabCutoutOneY;
+            tabCutoutTwoZ = tabCutoutOneZ;
+            oi("cube",x=tabCutoutTwoX,y=tabCutoutTwoY,z=tabCutoutTwoZ,width=tabCutoutTwoWidth,height=tabCutoutTwoHeight,depth=tabCutoutTwoDepth,color=color);
+            
+        }
+        
+        //tabRight Dimensions
+        difference(){
+            tabrightWidth = 20;
+            tabrightHeight = 6;
+            tabrightDepth = 3.5;
+            tabrightX = -tabrightWidth/2-46;
+            tabrightY = (batteryBaseHeight/2-tabrightHeight/2);
+            tabrightZ = tabrightDepth;
+            oi("cube",x=tabrightX,y=tabrightY,z=tabrightZ,width=tabrightWidth,height=tabrightHeight,depth=tabrightDepth,color=color);
+            
+            tabCutoutShift = 11;
+            //tabCutoutOne Dimensions
+            tabCutoutOneWidth = 2;
+            tabCutoutOneHeight = 3;
+            tabCutoutOneDepth = tabrightDepth;
+            tabCutoutOneX = tabrightX+tabCutoutShift/2;
+            tabCutoutOneY = (tabrightY-(tabrightHeight-tabCutoutOneHeight)/2);
+            tabCutoutOneZ = tabrightZ;
+            oi("cube",x=tabCutoutOneX,y=tabCutoutOneY,z=tabCutoutOneZ,width=tabCutoutOneWidth,height=tabCutoutOneHeight,depth=tabCutoutOneDepth,color=color);
+            //tabCutoutTwo Dimensions
+            tabCutoutTwoWidth = tabCutoutOneWidth;
+            tabCutoutTwoHeight = tabCutoutOneHeight;
+            tabCutoutTwoDepth = tabCutoutOneDepth;
+            tabCutoutTwoX = tabrightX-tabCutoutShift/2;
+            tabCutoutTwoY = tabCutoutOneY;
+            tabCutoutTwoZ = tabCutoutOneZ;
+            oi("cube",x=tabCutoutTwoX,y=tabCutoutTwoY,z=tabCutoutTwoZ,width=tabCutoutTwoWidth,height=tabCutoutTwoHeight,depth=tabCutoutTwoDepth,color=color);
+            
+        }
+    }        
+    
+
+      
+}
+
+
+module drawRyobiBattery(color, tabs=false, clearance=0){
+    batteryBaseHeight = 76;
+    batteryClipClearanceWidth = 30;
+    baseBumpShift=22;
+    batteryClipClearanceX = -batteryClipClearanceWidth/2-baseBumpShift-21;
+    if(!tabs){
+        union(){
+            //batteryBase Dimensions
+            batteryBaseWidth = 135;
+            //batteryBaseHeight = 76;
+            batteryBaseDepth = 35;
+            batteryBaseX = -batteryBaseWidth/2;
+            batteryBaseY = 0;
+            batteryBaseZ = 0;
+            oi("cube",x=batteryBaseX,y=batteryBaseY,z=batteryBaseZ,width=batteryBaseWidth,height=batteryBaseHeight,depth=batteryBaseDepth,color=color);
+        
+            //baseBumpShift=22;
+            //baseBump Dimensions
+            baseBumpWidth = 60;
+            baseBumpHeight = 62;
+            baseBumpDepth = 9;
+            baseBumpX = -baseBumpWidth/2-baseBumpShift;
+            baseBumpY = 0;
+            baseBumpZ = baseBumpDepth;
+            oi("cube",x=baseBumpX,y=baseBumpY,z=baseBumpZ,width=baseBumpWidth,height=baseBumpHeight,depth=baseBumpDepth,color=color);
+            
+            //frontBatteryBumpLeft Dimensions
+            frontBatteryBumpLeftWidth = 14;
+            frontBatteryBumpLeftHeight = 12;
+            frontBatteryBumpLeftDepth = 4;
+            frontBatteryBumpLeftX = baseBumpX-baseBumpWidth/2-frontBatteryBumpLeftWidth/2;
+            frontBatteryBumpLeftY = -15;
+            frontBatteryBumpLeftZ = frontBatteryBumpLeftDepth;
+            oi("cube",x=frontBatteryBumpLeftX,y=frontBatteryBumpLeftY,z=frontBatteryBumpLeftZ,width=frontBatteryBumpLeftWidth,height=frontBatteryBumpLeftHeight,depth=frontBatteryBumpLeftDepth,color=color);
+            
+            //frontBatteryBumpRight Dimensions
+            frontBatteryBumpRightWidth = frontBatteryBumpLeftWidth;
+            frontBatteryBumpRightHeight = frontBatteryBumpLeftHeight;
+            frontBatteryBumpRightDepth = frontBatteryBumpLeftDepth;
+            frontBatteryBumpRightX = frontBatteryBumpLeftX;
+            frontBatteryBumpRightY = -frontBatteryBumpLeftY;
+            frontBatteryBumpRightZ = frontBatteryBumpLeftZ;
+            oi("cube",x=frontBatteryBumpRightX,y=frontBatteryBumpRightY,z=frontBatteryBumpRightZ,width=frontBatteryBumpRightWidth,height=frontBatteryBumpRightHeight,depth=frontBatteryBumpRightDepth,color=color);
+            
+            //frontFrontBatteryBump Dimensions
+            frontFrontBatteryBumpWidth = 26;
+            frontFrontBatteryBumpHeight = 60;
+            frontFrontBatteryBumpDepth = frontBatteryBumpLeftDepth;
+            frontFrontBatteryBumpX = baseBumpX-baseBumpWidth/2-frontFrontBatteryBumpWidth/2-21;
+            frontFrontBatteryBumpY = 0;
+            frontFrontBatteryBumpZ = frontFrontBatteryBumpDepth;
+            oi("cube",x=frontFrontBatteryBumpX,y=frontFrontBatteryBumpY,z=frontFrontBatteryBumpZ,width=frontFrontBatteryBumpWidth,height=frontFrontBatteryBumpHeight,depth=frontFrontBatteryBumpDepth,color=color);
+            
+            
+            
+            //batteryClipClearance Dimensions
+            //batteryClipClearanceWidth = 30;
+            batteryClipClearanceHeight = 72;
+            batteryClipClearanceDepth = baseBumpDepth;
+            //batteryClipClearanceX = -batteryClipClearanceWidth/2-baseBumpShift-22;
+            batteryClipClearanceY = 0;
+            batteryClipClearanceZ = baseBumpZ;
+            oi("cube",x=batteryClipClearanceX,y=batteryClipClearanceY,z=batteryClipClearanceZ,width=batteryClipClearanceWidth,height=batteryClipClearanceHeight,depth=batteryClipClearanceDepth,color=color);
+            
+            
+            //stemSquare Dimensions
+            stemSquareWidth = 19.5;
+            stemSquareHeight = 28+clearance;
+            stemSquareDepth = 44;
+            stemSquareX = -stemSquareHeight/2-baseBumpShift-stemSquareWidth/2;
+            stemSquareY = 0;
+            stemSquareZ = baseBumpDepth+stemSquareDepth;
+            oi("cube",x=stemSquareX,y=stemSquareY,z=stemSquareZ,width=stemSquareWidth,height=stemSquareHeight,depth=stemSquareDepth,color=color);
+            //stemRound Dimensions
+            stemRoundDiameter = stemSquareHeight;
+            stemRoundDepth = stemSquareDepth;
+            stemRoundX = -stemRoundDiameter/2-baseBumpShift;
+            stemRoundY = 0;
+            stemRoundZ = stemSquareZ;
+            oi("cylinder",x=stemRoundX,y=stemRoundY,z=stemRoundZ,rad=stemRoundDiameter/2,depth=stemRoundDepth,color=color);
+            //bumpExtra Dimensions
+            bumpExtraWidth = 4;
+            bumpExtraHeight = 4;
+            bumpExtraDepth = 10;
+            bumpExtraX = stemSquareX-stemSquareWidth/2-bumpExtraHeight/2;
+            bumpExtraY = -stemSquareHeight/2+bumpExtraHeight/2+9;
+            bumpExtraZ = baseBumpZ+bumpExtraDepth;
+            oi("cube",x=bumpExtraX,y=bumpExtraY,z=bumpExtraZ,width=bumpExtraWidth,height=bumpExtraHeight,depth=bumpExtraDepth,color=color);
+        }
+    }
+    tabClearance = 0.75;
+    tabCutoutOneWidth = 4;
+    tabCutoutOneHeight = 3;
+    tabCutoutShift = 11;
+    tabLeftWidth = 20;
+    tabLeftHeight = 6;
+    tabLeftDepth = 3;
+    tabLeftZ = tabLeftDepth+.5;
+    tabLeftY = -(batteryBaseHeight/2-tabLeftHeight/2)-tabClearance;
+    if(tabs){
+        //tabLeft Dimensions
+        //tabClearance = 0.75;
+        //tabCutoutOneWidth = 4;
+        //tabCutoutOneHeight = 3;
+        //tabCutoutShift = 11;
+        tabLeftX = batteryClipClearanceX;//-tabLeftWidth/2-46;
+        difference(){
+            //tabLeftWidth = 20;
+            //tabLeftHeight = 6;
+            //tabLeftDepth = 3;
+            //tabLeftX = batteryClipClearanceX;//-tabLeftWidth/2-46;
+            //tabLeftY = -(batteryBaseHeight/2-tabLeftHeight/2)-tabClearance;
+            //tabLeftZ = tabLeftDepth+.5;
+            oi("cube",x=tabLeftX,y=tabLeftY,z=tabLeftZ,width=tabLeftWidth,height=tabLeftHeight,depth=tabLeftDepth,color=color);
+            
+            //tabCutoutShift = 11;
+            //tabCutoutOne Dimensions
+            //tabCutoutOneWidth = 4;
+            //tabCutoutOneHeight = 3;
+            tabCutoutOneDepth = tabLeftDepth;
+            tabCutoutOneX = tabLeftX+tabCutoutShift/2;
+            tabCutoutOneY = (tabLeftY+(tabLeftHeight-tabCutoutOneHeight)/2);
+            tabCutoutOneZ = tabLeftZ;
+            #oi("cube",x=tabCutoutOneX,y=tabCutoutOneY,z=tabCutoutOneZ,width=tabCutoutOneWidth,height=tabCutoutOneHeight,depth=tabCutoutOneDepth,color=color);
+            //tabCutoutTwo Dimensions
+            tabCutoutTwoWidth = tabCutoutOneWidth;
+            tabCutoutTwoHeight = tabCutoutOneHeight;
+            tabCutoutTwoDepth = tabCutoutOneDepth;
+            tabCutoutTwoX = tabLeftX-tabCutoutShift/2;
+            tabCutoutTwoY = tabCutoutOneY;
+            tabCutoutTwoZ = tabCutoutOneZ;
+            #oi("cube",x=tabCutoutTwoX,y=tabCutoutTwoY,z=tabCutoutTwoZ,width=tabCutoutTwoWidth,height=tabCutoutTwoHeight,depth=tabCutoutTwoDepth,color=color);
+            
+        }
+        
+        //tabRight Dimensions
+        difference(){
+            tabrightWidth = tabLeftWidth;
+            tabrightHeight = tabLeftHeight;
+            tabrightDepth = tabLeftDepth;
+            tabrightX = tabLeftX ;
+            tabrightY = -tabLeftY;
+            tabrightZ = tabLeftZ;
+            oi("cube",x=tabrightX,y=tabrightY,z=tabrightZ,width=tabrightWidth,height=tabrightHeight,depth=tabrightDepth,color=color);
+            
+            //tabCutoutShift = 11;
+            //tabCutoutOne Dimensions
+            tabCutoutOneWidth = tabCutoutOneWidth;
+            tabCutoutOneHeight = tabCutoutOneHeight;
+            tabCutoutOneDepth = tabrightDepth;
+            tabCutoutOneX = tabrightX+tabCutoutShift/2;
+            tabCutoutOneY = (tabrightY-(tabrightHeight-tabCutoutOneHeight)/2);
+            tabCutoutOneZ = tabrightZ;
+            oi("cube",x=tabCutoutOneX,y=tabCutoutOneY,z=tabCutoutOneZ,width=tabCutoutOneWidth,height=tabCutoutOneHeight,depth=tabCutoutOneDepth,color=color);
+            //tabCutoutTwo Dimensions
+            tabCutoutTwoWidth = tabCutoutOneWidth;
+            tabCutoutTwoHeight = tabCutoutOneHeight;
+            tabCutoutTwoDepth = tabCutoutOneDepth;
+            tabCutoutTwoX = tabrightX-tabCutoutShift/2;
+            tabCutoutTwoY = tabCutoutOneY;
+            tabCutoutTwoZ = tabCutoutOneZ;
+            oi("cube",x=tabCutoutTwoX,y=tabCutoutTwoY,z=tabCutoutTwoZ,width=tabCutoutTwoWidth,height=tabCutoutTwoHeight,depth=tabCutoutTwoDepth,color=color);
+            
+        }
+    }        
+    
+
+      
+}

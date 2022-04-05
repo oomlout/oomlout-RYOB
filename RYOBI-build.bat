@@ -25,7 +25,8 @@ SET LASERFILE=C:\DB\Dropbox\LALA-Laser Files\BBBB-projectFiles\%PROJECT%
 
 del %FILEFULL%.stl
 
-(for /l %%i in (1,1,11) do (
+REM (for /l %%i in (1,1,11) do (
+(for /l %%i in (10,1,11) do (
     echo Making Index: %%i Filename: %FILEFULL%-!ITEM[%%i]!	
     del %FILEFULL%-!ITEM[%%i]!-3DPR.stl   
     openscad -o %FILEFULL%-!ITEM[%%i]!-3DPR.stl -D "i=%%i;o=\"3DPR"" RYOBI-3DPR.scad
@@ -39,7 +40,7 @@ del %FILEFULL%.stl
     openscad -o %FILEFULL%-!ITEM[%%i]!-LAZE.svg -D "i=%%i;o=\"LAZE"" RYOBI-LAZE.scad
 	del %FILEFULL%-!ITEM[%%i]!-LAZE.pdf
 	inkscape.exe --export-filename="%FILEFULL%-!ITEM[%%i]!-LAZE.pdf" "%FILEFULL%-!ITEM[%%i]!-LAZE.svg"	
-	prusa-slicer-console.exe --export-gcode --repair --output %FILEFULL%-!ITEM[%%i]!-3DPR.gcode  -load "C:\DB\Dropbox\BBBB-Product Working\3DPR\3DPR-commandLine\OOBB-run.ini" %FILEFULL%-!ITEM[%%i]!-3DPR.stl  
+	REM prusa-slicer-console.exe --export-gcode --repair --output %FILEFULL%-!ITEM[%%i]!-3DPR.gcode  -load "C:\DB\Dropbox\BBBB-Product Working\3DPR\3DPR-commandLine\OOBB-run.ini" %FILEFULL%-!ITEM[%%i]!-3DPR.stl  
 ))
 
 

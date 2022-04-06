@@ -318,33 +318,29 @@ name=="TEST" ? "TEST":
     name=="batteryClipClearanceRotX"        ? 0 :
     name=="batteryClipClearanceRotY"        ? 0 :
     name=="batteryClipClearanceRotZ"        ? 0 :
+////////////batteryStem Variablies
+//////batteryStemClearance variable
+    name=="batteryStemClearance"        ? 2 :
 //////batteryStemSquare dimensions
-    name=="batteryStemSquareW"      ? 19.5 :
-    name=="batteryStemSquareH"      ? 28 :
+    name=="batteryStemSquareW"      ? 19.5 + gvv("batteryStemClearance") :
+    name=="batteryStemSquareH"      ? 28 + gvv("batteryStemClearance")  :
     name=="batteryStemSquareD"      ? 44 :
-    name=="batteryStemSquareX"      ? -gvv("batteryStemSquareH")/2-gvv("baseBumpShift")-gvv("batteryStemSquareW")/2 :
+    name=="batteryStemSquareX"      ? -gvv("batteryStemSquareH")/2-gvv("baseBumpShift")-gvv("batteryStemSquareW")/2:
     name=="batteryStemSquareY"      ? 0 :
     name=="batteryStemSquareZ"      ? gvv("batteryStemSquareD")+gvv("batteryBaseBumpD") :
-    name=="batteryStemSquareRadius"     ? 0 :
-    name=="batteryStemSquareRotX"       ? 0 :
-    name=="batteryStemSquareRotY"       ? 0 :
-    name=="batteryStemSquareRotZ"       ? 0 :  
 //////batteryStemCircle dimensions
     name=="batteryStemCircleW"      ? 0 :
     name=="batteryStemCircleH"      ? 0 :
     name=="batteryStemCircleD"      ? gvv("batteryStemSquareD") :
-    name=="batteryStemCircleX"      ? -gvv("batteryStemCircleRadius")-gvv("baseBumpShift") :
+    name=="batteryStemCircleX"      ? -gvv("batteryStemCircleRadius")-gvv("baseBumpShift") + gvv("batteryStemClearance") /2 :
     name=="batteryStemCircleY"      ? 0 :
     name=="batteryStemCircleZ"      ? gvv("batteryStemSquareZ") :
     name=="batteryStemCircleRadius"     ? gvv("batteryStemSquareH")/2 :
-    name=="batteryStemCircleRotX"       ? 0 :
-    name=="batteryStemCircleRotY"       ? 0 :
-    name=="batteryStemCircleRotZ"       ? 0 :
 //////batteryStemBump dimensions
-    name=="batteryStemBumpW"        ? 4 :
-    name=="batteryStemBumpH"        ? 4 :
+    name=="batteryStemBumpW"        ? 4  + gvv("batteryStemClearance"):
+    name=="batteryStemBumpH"        ? 4  + gvv("batteryStemClearance"):
     name=="batteryStemBumpD"        ? 10 :
-    name=="batteryStemBumpX"        ? gvv("batteryStemSquareX")-gvv("batteryStemSquareW")/2-gvv("batteryStemBumpW")/2 :
+    name=="batteryStemBumpX"        ? gvv("batteryStemSquareX")-gvv("batteryStemSquareW")/2-gvv("batteryStemBumpW")/2 + gvv("batteryStemClearance") /2 :
     name=="batteryStemBumpY"        ? -3 :
     name=="batteryStemBumpZ"        ? gvv("batteryBaseBumpZ")+gvv("batteryStemBumpD") :
     name=="batteryStemBumpRadius"       ? 0 :
@@ -467,7 +463,7 @@ name=="TEST" ? "TEST":
     name=="batteryClipLeftSolidH"       ? 15 :
     name=="batteryClipLeftSolidD"       ? 25 :
     name=="batteryClipLeftSolidX"       ? gvv("batteryStemSquareX") - gvv("batteryStemSquareW")/2 + gvv("batteryClipLeftSolidW") / 2 + 8:
-    name=="batteryClipLeftSolidY"       ? -gvv("batteryStemSquareH")/2 :
+    name=="batteryClipLeftSolidY"       ? -gvv("batteryStemSquareH")/2 +  gvv("batteryStemClearance") - 2 :
     name=="batteryClipLeftSolidZ"       ? gvv("batteryStemSquareZ") + gvv("batteryClipLeftSolidD") - 14 + 3 :
     name=="batteryClipLeftSolidRadius"      ? 0 :
     name=="batteryClipLeftSolidRotX"        ? 0 :

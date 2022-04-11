@@ -12,15 +12,9 @@ OPSCbuild(shift=200);
 // Description
 module draw1(){
     color="red";
-    
-    //#drawRyobiBatteryV1(color);
-    //drawRyobiBattery(color,clearance=1.5,tabs=true);
-        drawRyobiBattery(color);
-    //translate([0,0,10]){
-        //drawRyobiBatteryClips("yellow");
-        drawRyobiBatteryClipsTop("orange");
-    //}
-
+    oiii(type="ryobiBattery");
+    oiii(type="ryobiBatteryClips");
+    oiii(type="ryobiBatteryClipsTop");
 }
 
 // ZZZZ
@@ -89,7 +83,7 @@ module draw9(){
                 testZ = testDepth+35;
                 oi("cubeRounded",x=testX,y=testY,z=testZ,width=testWidth,height=testHeight,depth=testDepth,color=color);
                 drawRyobiBattery(color);
-                drawRyobiBatteryClipsTop(color);
+                oiii(type="ryobiBatteryClipsTop");
                 screwTopWidth = 0;
                 screwTopHeight = 0;
                 screwTopDepth = 0;
@@ -208,61 +202,6 @@ module drawRyobiBattery(color){
 
 }
 
-module drawRyobiBatteryClipsTop(color){
-
-//////////// Left Side
-//////batteryClipLeft oiii if    
-    #oiii("batteryClip","batteryClipLeft",color);    ////ASSEMBLY
-//////batteryClipRight oiii insert    
-    #oiii("batteryClip","batteryClipRight",color);    ////ASSEMBLY    
-        
-}
-
-module drawRyobiBatteryClipsTopOld(color){
-
-//////////// Left Side
-    difference(){
-        //postive portion
-        union(){            
-//////batteryClipLeftSolid oi
-            oii("cube","batteryClipLeftSolid",color);  
-//////batteryClipLeftSolidExtra oi
-            oii("cube","batteryClipLeftSolidExtra",color);     
-        }
-        //negative portion
-        union(){
-//////batteryClipLeftNegative oi
-            oii("cube","batteryClipLeftNegative",color);
-//////batteryClipLeftNegativeFront oi
-            oii("cube","batteryClipLeftNegativeFront",color);        
-//////batteryClipLeftNegativeFront oi
-            oii("cube","batteryClipLeftNegativeRear",color);                    
-            
-        }
-    }
-////////////Right Side    
-difference(){
-        //postive portion
-        union(){            
-//////batteryClipRightSolid oi
-            oii("cube","batteryClipRightSolid",color);  
-//////batteryClipReightSolidExtra oi
-            oii("cube","batteryClipRightSolidExtra",color);     
-        }
-        //negative portion
-        union(){
-//////batteryClipRightNegative oi
-            oii("cube","batteryClipRightNegative",color);
-//////batteryClipRightNegativeFront oi
-            oii("cube","batteryClipRightNegativeFront",color);        
-//////batteryClipRightNegativeFront oi
-            oii("cube","batteryClipRightNegativeRear",color);                    
-            
-        }
-    }    
-}
-
-
 module drawRyobiBatteryClips(color){
     difference(){
         union(){
@@ -321,6 +260,32 @@ module oii(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=0
                                 }
                             }                        
                             
+                    }
+
+//@@@@@@ryobiBatteryClipsTop Asembly                    
+                    else if(type=="ryobiBatteryClipsTop"){
+                    //////batteryClipLeft oiii if    
+                        #oiii("batteryClip","batteryClipLeft",color);    ////ASSEMBLY
+                    //////batteryClipRight oiii insert    
+                        #oiii("batteryClip","batteryClipRight",color);    ////ASSEMBLY  
+                    }                        
+//@@@@@@ryobiBattery Asembly                    
+                    else if(type=="ryobiBattery"){
+                        x = -gvv("batteryStemSquareX");
+                        y = 0;
+                        z = -gvv("batteryStemSquareZ");
+                        translate([x,y,z]){
+                            drawRyobiBattery(color);
+                        }
+                    } 
+//@@@@@@ryobiBatteryClips Asembly                                           
+                    else if(type=="ryobiBatteryClips"){
+                        x = -gvv("batteryStemSquareX");
+                        y = 0;
+                        z = -gvv("batteryStemSquareZ");
+                        translate([x,y,z]){
+                            drawRyobiBatteryClips(color);                          
+                        }
                     }                        
                     else{    
                         oi(type,x=gvv(str(name,"X")),y=gvv(str(name,"Y")),z=gvv(str(name,"Z")),width=gvv(str(name,"W")),height=gvv(str(name,"H")),depth=gvv(str(name,"D")),rad=gvv(str(name,"Radius")),rotX=gvv(str(name,"RotX")),rotY=gvv(str(name,"RotY")),rotZ=gvv(str(name,"RotZ")),color=color,name=name);
@@ -508,9 +473,9 @@ name=="TEST" ? "TEST":
     name=="tabCutoutBBRotZ"     ? 0 :                      
 ////////////Battery Clip Dimensions
 //////batteryClipLeft coordinates'
-    name=="batteryClipLeftX"        ? gvv("batteryStemSquareX") - gvv("batteryStemSquareW")/2 + gvv("batteryClipSolidW") / 2 + 8 :
+    name=="batteryClipLeftX"        ? - gvv("batteryStemSquareW")/2 + gvv("batteryClipSolidW") / 2 + 8 :
     name=="batteryClipLeftY"        ? -gvv("batteryStemSquareH")/2 +  gvv("batteryStemClearance") :    
-    name=="batteryClipLeftZ"        ? gvv("batteryStemSquareZ") + gvv("batteryClipLeftSolidD") - 11 :    
+    name=="batteryClipLeftZ"        ? gvv("batteryClipLeftSolidD") - 11 :    
     name=="batteryClipLeftRotX"     ? 0 :    
     name=="batteryClipLeftRotY"     ? 0 :    
     name=="batteryClipLeftRotZ"     ? 0 :    

@@ -13,9 +13,9 @@ OPSCbuild(shift=200);
 // Description
 module draw1(){
     color="red";
-    oiii(type="ryobiBattery");
-    oiii(type="ryobiBatteryClips");
-    oiii(type="ryobiBatteryClipsTop");
+    oiiiR(type="ryobiBattery",ex=1);
+    oiiiR(type="ryobiBatteryClips");
+    oiiiR(type="ryobiBatteryClipsTop");
 }
 
 // ZZZZ
@@ -84,7 +84,7 @@ module draw9(){
                 testZ = testDepth+35;
                 oi("cubeRounded",x=testX,y=testY,z=testZ,width=testWidth,height=testHeight,depth=testDepth,color=color);
                 drawRyobiBattery(color);
-                oiii(type="ryobiBatteryClipsTop");
+                oiiiR(type="ryobiBatteryClipsTop");
                 screwTopWidth = 0;
                 screwTopHeight = 0;
                 screwTopDepth = 0;

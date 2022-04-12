@@ -1,26 +1,26 @@
 
-module drawRyobiBattery(color){
+module drawRyobiBattery(color,ex=0){
     difference(){
 ////////////positive portions
         union(){
 //////batteryBase oi
-            oiiR("cube","batteryBase",color);
+            oiiR("cube","batteryBase",color,ex=ex);
 //////batteryBaseBump oi
-            oiiR("cube","batteryBaseBump",color);   
+            oiiR("cube","batteryBaseBump",color,ex=ex);   
 //////batteryClipClearance oi
-            oiiR("cube","batteryClipClearance",color);                     
+            oiiR("cube","batteryClipClearance",color,ex=ex);                     
 //////batteryStemSquare oi
-            oiiR("cube","batteryStemSquare",color); 
+            oiiR("cube","batteryStemSquare",color,ex=ex); 
 //////batteryStemCircle oi
-            oiiR("cylinder","batteryStemCircle",color);
+            oiiR("cylinder","batteryStemCircle",color,ex=ex);
 //////batteryStemBump oi
-            oiiR("cube","batteryStemBump",color);  
+            oiiR("cube","batteryStemBump",color,ex=ex);  
 //////frontBumpLeft oi
-            oiiR("cube","frontBumpLeft",color);                                    
+            oiiR("cube","frontBumpLeft",color,ex=ex);                                    
 //////frontBumpLeft oi
-            oiiR("cube","frontBumpRight",color);
+            oiiR("cube","frontBumpRight",color,ex=ex);
 //////frontBump oi
-            oiiR("cube","frontBump",color);             
+            oiiR("cube","frontBump",color,ex=ex);             
                                                               
         }
 
@@ -57,8 +57,8 @@ module drawRyobiBatteryClips(color){
     }
 }
 
-module oiiiR(type,name,color){
-   oiiR(type,x=gvvR(str(name,"X")),y=gvvR(str(name,"Y")),z=gvvR(str(name,"Z")),rotX=gvvR(str(name,"RotX")),rotY=gvvR(str(name,"RotY")),rotZ=gvvR(str(name,"RotZ")),color); 
+module oiiiR(type,name,color,ex=0){
+   oiiR(type,x=gvvR(str(name,"X")),y=gvvR(str(name,"Y")),z=gvvR(str(name,"Z")),rotX=gvvR(str(name,"RotX")),rotY=gvvR(str(name,"RotY")),rotZ=gvvR(str(name,"RotZ")),color,ex=ex); 
 }
 
 module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=0,width=0,height=0,depth=100,rad=0,rad2=0,alpha=1,OOwidth=0,OOheight=0,holes=true,negative=true){
@@ -96,9 +96,9 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
 //@@@@@@ryobiBatteryClipsTop Asembly                    
                     else if(type=="ryobiBatteryClipsTop"){
                     //////batteryClipLeft oiii if    
-                        #oiiiR("batteryClip","batteryClipLeft",color);    ////ASSEMBLY
+                        oiiiR("batteryClip","batteryClipLeft",color);    ////ASSEMBLY
                     //////batteryClipRight oiii insert    
-                        #oiiiR("batteryClip","batteryClipRight",color);    ////ASSEMBLY  
+                        oiiiR("batteryClip","batteryClipRight",color);    ////ASSEMBLY  
                     }                        
 //@@@@@@ryobiBattery Asembly                    
                     else if(type=="ryobiBattery"){
@@ -106,7 +106,7 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
                         y = 0;
                         z = -gvvR("batteryStemSquareZ");
                         translate([x,y,z]){
-                            drawRyobiBattery(color);
+                            drawRyobiBattery(color,ex=ex);
                         }
                     } 
 //@@@@@@ryobiBatteryClips Asembly                                           
@@ -119,7 +119,7 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
                         }
                     }                        
                     else{    
-                        oi(type,x=gvvR(str(name,"X")),y=gvvR(str(name,"Y")),z=gvvR(str(name,"Z")),width=gvvR(str(name,"W")),height=gvvR(str(name,"H")),depth=gvvR(str(name,"D")),rad=gvvR(str(name,"Radius")),rotX=gvvR(str(name,"RotX")),rotY=gvvR(str(name,"RotY")),rotZ=gvvR(str(name,"RotZ")),color=color,name=name);
+                        oi(type,x=gvvR(str(name,"X"),ex=ex),y=gvvR(str(name,"Y"),ex=ex),z=gvvR(str(name,"Z"),ex=ex),width=gvvR(str(name,"W"),ex=ex),height=gvvR(str(name,"H"),ex=ex),depth=gvvR(str(name,"D"),ex=ex),rad=gvvR(str(name,"Radius"),ex=ex),rotX=gvvR(str(name,"RotX"),ex=ex),rotY=gvvR(str(name,"RotY"),ex=ex),rotZ=gvvR(str(name,"RotZ"),ex=ex),color=color,name=name);
                     }
                 }
         }
@@ -127,39 +127,39 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
 }
 
 
-function gvvR(name) =
+function gvvR(name, ex=0) =
 name=="TEST" ? "TEST":
 //////baseBumpShift variable
     name=="baseBumpShift"       ? 22 :
 //////batteryBase dimensions
-    name=="batteryBaseW"        ? 135 :
-    name=="batteryBaseH"        ? 76 :
-    name=="batteryBaseD"        ? 35 :
+    name=="batteryBaseW"        ? 135 + ex :
+    name=="batteryBaseH"        ? 76 + ex :
+    name=="batteryBaseD"        ? 35 + ex :
     name=="batteryBaseX"        ? -gvvR("batteryBaseW")/2 :
     name=="batteryBaseY"        ? 0 :
-    name=="batteryBaseZ"        ? 0 :
+    name=="batteryBaseZ"        ? 0  + ex / 2 :
     name=="batteryBaseRadius"       ? 0 :
     name=="batteryBaseRotX"     ? 0 :
     name=="batteryBaseRotY"     ? 0 :
     name=="batteryBaseRotZ"     ? 0 :
 //////batteryBaseBump dimensions
-    name=="batteryBaseBumpW"        ? 60 :
-    name=="batteryBaseBumpH"        ? 62 :
-    name=="batteryBaseBumpD"        ? 9 :
+    name=="batteryBaseBumpW"        ? 60 + ex :
+    name=="batteryBaseBumpH"        ? 62 + ex :
+    name=="batteryBaseBumpD"        ? 9 + ex :
     name=="batteryBaseBumpX"        ? -gvvR("batteryBaseBumpW")/2-gvvR("baseBumpShift") :
     name=="batteryBaseBumpY"        ? 0 :
-    name=="batteryBaseBumpZ"        ? gvvR("batteryBaseBumpD") :
+    name=="batteryBaseBumpZ"        ? gvvR("batteryBaseBumpD") + ex / 2 :
     name=="batteryBaseBumpRadius"       ? 0 :
     name=="batteryBaseBumpRotX"     ? 0 :
     name=="batteryBaseBumpRotY"     ? 0 :
     name=="batteryBaseBumpRotZ"     ? 0 :
 //////batteryClipClearance dimensions
-    name=="batteryClipClearanceW"       ? 30 :
-    name=="batteryClipClearanceH"       ? 72 :
-    name=="batteryClipClearanceD"       ? gvvR("batteryBaseBumpD") :
+    name=="batteryClipClearanceW"       ? 30 + ex:
+    name=="batteryClipClearanceH"       ? 72 + ex:
+    name=="batteryClipClearanceD"       ? gvvR("batteryBaseBumpD") + ex :
     name=="batteryClipClearanceX"       ? -gvvR("batteryClipClearanceW")/2-gvvR("baseBumpShift")-21 :
     name=="batteryClipClearanceY"       ? 0 :
-    name=="batteryClipClearanceZ"       ? gvvR("batteryBaseBumpD") :
+    name=="batteryClipClearanceZ"       ? gvvR("batteryBaseBumpD") + ex / 2:
     name=="batteryClipClearanceRadius"      ? 0 :
     name=="batteryClipClearanceRotX"        ? 0 :
     name=="batteryClipClearanceRotY"        ? 0 :
@@ -194,34 +194,34 @@ name=="TEST" ? "TEST":
     name=="batteryStemBumpRotY"     ? 0 :
     name=="batteryStemBumpRotZ"     ? 0 :  
 //////frontBumpLeft dimensions
-    name=="frontBumpLeftW"      ? 14 :
-    name=="frontBumpLeftH"      ? 12 :
-    name=="frontBumpLeftD"      ? 4 :
+    name=="frontBumpLeftW"      ? 14 + ex:
+    name=="frontBumpLeftH"      ? 12 + ex :
+    name=="frontBumpLeftD"      ? 4 + ex :
     name=="frontBumpLeftX"      ? gvvR("batteryBaseBumpX")-gvvR("batteryBaseBumpW")/2-gvvR("frontBumpLeftW")/2 :
     name=="frontBumpLeftY"      ? -15 :
-    name=="frontBumpLeftZ"      ? gvvR("frontBumpLeftD") :
+    name=="frontBumpLeftZ"      ? gvvR("frontBumpLeftD")  + ex / 2:
     name=="frontBumpLeftRadius"     ? 0 :
     name=="frontBumpLeftRotX"       ? 0 :
     name=="frontBumpLeftRotY"       ? 0 :
     name=="frontBumpLeftRotZ"       ? 0 :   
 //////frontBumpRight dimensions
-    name=="frontBumpRightW"      ? gvvR("frontBumpLeftW") :
-    name=="frontBumpRightH"      ? gvvR("frontBumpLeftH") :
-    name=="frontBumpRightD"      ? gvvR("frontBumpLeftD") :
-    name=="frontBumpRightX"      ? gvvR("frontBumpLeftX") :
+    name=="frontBumpRightW"      ? gvvR("frontBumpLeftW", ex=ex) :
+    name=="frontBumpRightH"      ? gvvR("frontBumpLeftH", ex=ex) :
+    name=="frontBumpRightD"      ? gvvR("frontBumpLeftD", ex=ex) :
+    name=="frontBumpRightX"      ? gvvR("frontBumpLeftX", ex=ex) :
     name=="frontBumpRightY"      ? 15 :
-    name=="frontBumpRightZ"      ? gvvR("frontBumpLeftZ") :
+    name=="frontBumpRightZ"      ? gvvR("frontBumpLeftZ", ex=ex) :
     name=="frontBumpRightRadius"     ? 0 :
     name=="frontBumpRightRotX"       ? 0 :
     name=="frontBumpRightRotY"       ? 0 :
     name=="frontBumpRightRotZ"       ? 0 :
 //////frontBump dimensions
-    name=="frontBumpW"      ? 26 :
-    name=="frontBumpH"      ? 60 :
-    name=="frontBumpD"      ? gvvR("frontBumpLeftD") :
+    name=="frontBumpW"      ? 26 + ex:
+    name=="frontBumpH"      ? 60 + ex :
+    name=="frontBumpD"      ? gvvR("frontBumpLeftD") + ex :
     name=="frontBumpX"      ? gvvR("batteryBaseX")-gvvR("batteryBaseW")/2+gvvR("frontBumpW")/2+7 :
     name=="frontBumpY"      ? 0 :
-    name=="frontBumpZ"      ? gvvR("frontBumpLeftD")
+    name=="frontBumpZ"      ? gvvR("frontBumpLeftD") + ex / 2
      :
     name=="frontBumpRadius"     ? 0 :
     name=="frontBumpRotX"       ? 0 :

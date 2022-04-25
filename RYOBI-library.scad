@@ -129,6 +129,75 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
 
 function gvvR(name, ex=0) =
 name=="TEST" ? "TEST":
+//////batteryTopMain dimensions'
+    name=="batteryTopMainW"     ? 50 :
+    name=="batteryTopMainH"     ? 50 :
+    name=="batteryTopMainD"     ? 25 :
+    name=="batteryTopMainX"     ? 0 :
+    name=="batteryTopMainY"     ? 0 :
+    name=="batteryTopMainZ"     ? 7 :
+    name=="batteryTopMainRadius"        ? 0 :
+    name=="batteryTopMainRotX"      ? 0 :
+    name=="batteryTopMainRotY"      ? 0 :
+    name=="batteryTopMainRotZ"      ? 0 :
+//////batteryTopHole dimensions'    
+    name=="batteryTopHoleW"     ? 0 :
+    name=="batteryTopHoleH"     ? 0 :
+    name=="batteryTopHoleD"     ? 500 :
+    name=="batteryTopHoleX"     ? 0 :
+    name=="batteryTopHoleY"     ? 0 :
+    name=="batteryTopHoleZ"     ? 250 :
+    name=="batteryTopHoleRadius"        ? 12.5 :
+    name=="batteryTopHoleRotX"      ? 0 :
+    name=="batteryTopHoleRotY"      ? 0 :
+    name=="batteryTopHoleRotZ"      ? 0 :
+//////batteryTopBattery dimensions'
+    name=="batteryTopBatteryW"      ? 0 :
+    name=="batteryTopBatteryH"      ? 0 :
+    name=="batteryTopBatteryD"      ? 0 :
+    name=="batteryTopBatteryX"      ? -8 :
+    name=="batteryTopBatteryY"      ? 0 :
+    name=="batteryTopBatteryZ"      ? 0 :
+    name=="batteryTopBatteryRadius"     ? 0 :
+    name=="batteryTopBatteryRotX"       ? 0 :
+    name=="batteryTopBatteryRotY"       ? 0 :
+    name=="batteryTopBatteryRotZ"       ? 0 :
+//////batteryTopZipTieFirstFront dimensions'    
+    name=="batteryTopZipTieFirstFrontW"     ? 0 :
+    name=="batteryTopZipTieFirstFrontH"     ? 0 :
+    name=="batteryTopZipTieFirstFrontD"     ? 0 :
+    name=="batteryTopZipTieFirstFrontX"     ? gvvR("batteryClipLeftX") :
+    name=="batteryTopZipTieFirstFrontY"     ? 0 :
+    name=="batteryTopZipTieFirstFrontZ"     ? gvvR("batteryTopMainZ")-3 :
+    name=="batteryTopZipTieFirstFrontRadius"        ? 0 :
+    name=="batteryTopZipTieFirstFrontRotX"      ? -90 :
+    name=="batteryTopZipTieFirstFrontRotY"      ? 0 :
+    name=="batteryTopZipTieFirstFrontRotZ"      ? 0 :
+//////batteryTopZipTieFirstFrontBack dimensions'
+    name=="batteryTopZipTieFirstBackW"     ? gvvR("batteryTopZipTieFirstFrontW") :
+    name=="batteryTopZipTieFirstBackH"     ? gvvR("batteryTopZipTieFirstFrontH") :
+    name=="batteryTopZipTieFirstBackD"     ? gvvR("batteryTopZipTieFirstFrontD") :
+    name=="batteryTopZipTieFirstBackX"     ? gvvR("batteryTopZipTieFirstFrontX") :
+    name=="batteryTopZipTieFirstBackY"     ? gvvR("batteryTopZipTieFirstFrontY") :
+    name=="batteryTopZipTieFirstBackZ"     ? gvvR("batteryTopZipTieFirstFrontZ") :
+    name=="batteryTopZipTieFirstBackRadius"        ? gvvR("batteryTopZipTieFirstFrontRadius") :
+    name=="batteryTopZipTieFirstBackRotX"      ? 90 :
+    name=="batteryTopZipTieFirstBackRotY"      ? gvvR("batteryTopZipTieFirstFrontRotY") :
+    name=="batteryTopZipTieFirstBackRotZ"      ? gvvR("batteryTopZipTieFirstFrontRotZ") :
+//////batteryTopZiptieSecond dimensions'
+    name=="batteryTopZiptieSecondW"     ? 0 :
+    name=="batteryTopZiptieSecondH"     ? 0 :
+    name=="batteryTopZiptieSecondD"     ? 0 :
+    name=="batteryTopZiptieSecondX"     ? 20 :
+    name=="batteryTopZiptieSecondY"     ? -20 :
+    name=="batteryTopZiptieSecondZ"     ? 50 :
+    name=="batteryTopZiptieSecondRadius"        ? 0 :
+    name=="batteryTopZiptieSecondRotX"      ? 0 :
+    name=="batteryTopZiptieSecondRotY"      ? 0 :
+    name=="batteryTopZiptieSecondRotZ"      ? 90 :
+
+
+
 //////baseBumpShift variable
     name=="baseBumpShift"       ? 22 :
 //////batteryBase dimensions

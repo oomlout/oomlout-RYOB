@@ -71,30 +71,29 @@ module draw8(){
 // Description
 module draw9(){
     color="gray";
-    //translate([0,0,30]){
-    translate([0,0,0]){
-        
+    translate([0,0,30]){
+    //translate([0,0,0]){
         difference(){
-            //test Dimensions
-                testWidth = 50;
-                testHeight = 50;
-                testDepth = 25;
-                testX = -testWidth/2-17;
-                testY = 0;
-                testZ = testDepth+35;
-                oi("cubeRounded",x=testX,y=testY,z=testZ,width=testWidth,height=testHeight,depth=testDepth,color=color);
-                drawRyobiBattery(color);
+            //postive portion
+            union(){
+//////batteryTopMain oi
+                oiiR("cubeRounded","batteryTopMain",color);
+            }
+            //negative portion
+            union(){
                 oiiiR(type="ryobiBatteryClipsTop");
-                screwTopWidth = 0;
-                screwTopHeight = 0;
-                screwTopDepth = 0;
-                screwTopX = -30;
-                screwTopY = -18;
-                screwTopZ = testDepth-3;
-                oi("holeM3",x=screwTopX,y=screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
-                oi("holeM3",x=screwTopX,y=-screwTopY,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
-                oi("hole",rad=12.5,x=screwTopX-8,y=0,z=screwTopZ,width=screwTopWidth,height=screwTopHeight,depth=screwTopDepth,color=color);
-        }
+//////batteryTopHole oi
+                oiiR("cylinder","batteryTopHole",color);
+//////ryobiBattery                                
+                oiiiR("ryobiBattery","batteryTopBattery",color);
+//////batteryTopZipTieFirstFront oi
+                oiiiR("zipTieSmall","batteryTopZipTieFirstFront",color);   
+//////batteryTopZipTieFirstBack oi
+                oiiiR("zipTieSmall","batteryTopZipTieFirstBack",color);                
+//////batteryTopZiptieSecond oi
+                oiiiR("zipTieSmall","batteryTopZiptieSecond",color);
+            }
+        }        
     }
 }
 

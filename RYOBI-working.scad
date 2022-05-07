@@ -91,7 +91,7 @@ module draw9(){
 //////batteryTopZipTieFirstBack oi
                 oiiiR("zipTieSmall","batteryTopZipTieFirstBack",color);                
 //////batteryTopZiptieSecond oi
-                oiiiR("zipTieSmall","batteryTopZiptieSecond",color);
+                oiiiR("zipTieBig","batteryTopZiptieSecond",color);
             }
         }        
     }

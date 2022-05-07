@@ -26,7 +26,7 @@ SET LASERFILE=C:\DB\Dropbox\LALA-Laser Files\BBBB-projectFiles\%PROJECT%
 del %FILEFULL%.stl
 
 REM (for /l %%i in (1,1,11) do (
-(for /l %%i in (9,1,11) do (
+(for /l %%i in (1,1,11) do (
     echo Making Index: %%i Filename: %FILEFULL%-!ITEM[%%i]!	
     del %FILEFULL%-!ITEM[%%i]!-3DPR.stl   
     openscad -o %FILEFULL%-!ITEM[%%i]!-3DPR.stl -D "i=%%i;o=\"3DPR"" RYOBI-3DPR.scad

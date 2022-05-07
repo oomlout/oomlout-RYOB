@@ -78,7 +78,7 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
                                 //////batteryClipLeftSolid oi
                                     oiiR("cube","batteryClipSolid",color);  
                                 //////batteryClipLeftSolidExtra oi
-                                    oiiR("cube","batteryClipSolidExtra",color);     
+                                    #oiiR("cube","batteryClipSolidExtra",color);     
                                 }
                                 //negative portion
                                 union(){
@@ -131,9 +131,9 @@ function gvvR(name, ex=0) =
 name=="TEST" ? "TEST":
 //////batteryTopMain dimensions'
     name=="batteryTopMainW"     ? 50 :
-    name=="batteryTopMainH"     ? 50 :
+    name=="batteryTopMainH"     ? 53 :
     name=="batteryTopMainD"     ? 25 :
-    name=="batteryTopMainX"     ? 0 :
+    name=="batteryTopMainX"     ? 6 :
     name=="batteryTopMainY"     ? 0 :
     name=="batteryTopMainZ"     ? 7 :
     name=="batteryTopMainRadius"        ? 0 :
@@ -144,7 +144,7 @@ name=="TEST" ? "TEST":
     name=="batteryTopHoleW"     ? 0 :
     name=="batteryTopHoleH"     ? 0 :
     name=="batteryTopHoleD"     ? 500 :
-    name=="batteryTopHoleX"     ? 0 :
+    name=="batteryTopHoleX"     ? gvvR("batteryClipLeftX") :
     name=="batteryTopHoleY"     ? 0 :
     name=="batteryTopHoleZ"     ? 250 :
     name=="batteryTopHoleRadius"        ? 12.5 :
@@ -155,7 +155,7 @@ name=="TEST" ? "TEST":
     name=="batteryTopBatteryW"      ? 0 :
     name=="batteryTopBatteryH"      ? 0 :
     name=="batteryTopBatteryD"      ? 0 :
-    name=="batteryTopBatteryX"      ? -8 :
+    name=="batteryTopBatteryX"      ? 0 :
     name=="batteryTopBatteryY"      ? 0 :
     name=="batteryTopBatteryZ"      ? 0 :
     name=="batteryTopBatteryRadius"     ? 0 :
@@ -235,7 +235,7 @@ name=="TEST" ? "TEST":
     name=="batteryClipClearanceRotZ"        ? 0 :
 ////////////batteryStem Variablies
 //////batteryStemClearance variable
-    name=="batteryStemClearance"        ? 2 :
+    name=="batteryStemClearance"        ? 1 :
 //////batteryStemSquare dimensions
     name=="batteryStemSquareW"      ? 19.5 + gvvR("batteryStemClearance") :
     name=="batteryStemSquareH"      ? 28 + gvvR("batteryStemClearance")  :
@@ -306,7 +306,7 @@ name=="TEST" ? "TEST":
 //////batteryTabLeft dimensions
 
     name=="batteryTabLeftW"     ? 20 :
-    name=="batteryTabLeftH"     ? 6 + gvvR("tabExtra") - gvvR("tabClearance"):
+    name=="batteryTabLeftH"     ? 6 + gvvR("tabExtra") - gvvR("tabClearance")/2:
     name=="batteryTabLeftD"     ? 3 :
     name=="batteryTabLeftX"     ? gvvR("batteryClipClearanceX") :
     //name=="batteryTabLeftY"     ? -gvvR("batteryBaseH")/2+gvvR("batteryTabLeftH")-gvvR("tabExtra")/2-gvvR("tabClearance")-gvvR("tabExtra")+ gvvR("tabClearance"):
@@ -373,9 +373,11 @@ name=="TEST" ? "TEST":
     name=="tabCutoutBBRotY"     ? 0 :
     name=="tabCutoutBBRotZ"     ? 0 :                      
 ////////////Battery Clip Dimensions
+//////batteryClipExtra variable
+    name=="batteryClipExtra"        ? 1.5 :
 //////batteryClipLeft coordinates'
-    name=="batteryClipLeftX"        ? - gvvR("batteryStemSquareW")/2 + gvvR("batteryClipSolidW") / 2 + 8 :
-    name=="batteryClipLeftY"        ? -gvvR("batteryStemSquareH")/2 +  gvvR("batteryStemClearance") :    
+    name=="batteryClipLeftX"        ? - gvvR("batteryStemSquareW")/2 + gvvR("batteryClipSolidW") / 2 + gvvR("batteryStemClearance") +8 :
+    name=="batteryClipLeftY"        ? -gvvR("batteryStemSquareH")/2 +  gvvR("batteryStemClearance") -  gvvR("batteryClipExtra") :    
     name=="batteryClipLeftZ"        ? gvvR("batteryClipLeftSolidD") - 11 :    
     name=="batteryClipLeftRotX"     ? 0 :    
     name=="batteryClipLeftRotY"     ? 0 :    
@@ -393,7 +395,7 @@ name=="TEST" ? "TEST":
     name=="batteryClipSolidD"       ? 25 :
     name=="batteryClipSolidX"       ? 0:
     name=="batteryClipSolidY"       ? - 2 :
-    name=="batteryClipSolidZ"       ? gvvR("batteryClipSolidD") :
+    name=="batteryClipSolidZ"       ? gvvR("batteryClipSolidD")-2 :
     name=="batteryClipSolidRadius"      ? 0 :
     name=="batteryClipSolidRotX"        ? 0 :
     name=="batteryClipSolidRotY"        ? 0 :
@@ -402,14 +404,14 @@ name=="TEST" ? "TEST":
     name=="batteryClipSolidExtraShift"      ? 9.25 :
     name=="batteryClipSolidExtraW"      ? gvvR("batteryClipSolidW") :
     name=="batteryClipSolidExtraH"      ? gvvR("batteryClipSolidH") - gvvR("batteryClipSolidExtraShift") :
-    name=="batteryClipSolidExtraD"      ? gvvR("batteryClipSolidD")+5 :
+    name=="batteryClipSolidExtraD"      ? gvvR("batteryClipSolidD")+3 :
     name=="batteryClipSolidExtraX"      ? gvvR("batteryClipSolidX") :
     name=="batteryClipSolidExtraY"      ? gvvR("batteryClipSolidY") - gvvR("batteryClipSolidExtraShift")/2:
     name=="batteryClipSolidExtraZ"      ? gvvR("batteryClipSolidZ") :
 //////batteryClipLeftNegative dimensions
     name=="batteryClipNegativeW"        ? 7.5 :
     name=="batteryClipNegativeH"        ? 1.25 :
-    name=="batteryClipNegativeD"        ? 8.5 :
+    name=="batteryClipNegativeD"        ? 10.5 :
     name=="batteryClipNegativeX"        ? gvvR("batteryClipSolidX") :
     name=="batteryClipNegativeY"        ? gvvR("batteryClipSolidY") - 1:
     name=="batteryClipNegativeZ"        ? gvvR("batteryClipSolidZ") - gvvR("batteryClipSolidD") + gvvR("batteryClipNegativeD") :

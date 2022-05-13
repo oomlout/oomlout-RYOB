@@ -78,7 +78,7 @@ module oiiR(type,name,color="gray",x=0,y=0,z=0,ex=0,length=0,rotX=0,rotY=0,rotZ=
                                 //////batteryClipLeftSolid oi
                                     oiiR("cube","batteryClipSolid",color);  
                                 //////batteryClipLeftSolidExtra oi
-                                    #oiiR("cube","batteryClipSolidExtra",color);     
+                                    oiiR("cube","batteryClipSolidExtra",color);     
                                 }
                                 //negative portion
                                 union(){
@@ -132,7 +132,7 @@ name=="TEST" ? "TEST":
 //////batteryTopMain dimensions'
     name=="batteryTopMainW"     ? 50 :
     name=="batteryTopMainH"     ? 53 :
-    name=="batteryTopMainD"     ? 25 :
+    name=="batteryTopMainD"     ? 35 :
     name=="batteryTopMainX"     ? 6 :
     name=="batteryTopMainY"     ? 0 :
     name=="batteryTopMainZ"     ? 7 :
@@ -378,7 +378,7 @@ name=="TEST" ? "TEST":
 //////batteryClipLeft coordinates'
     name=="batteryClipLeftX"        ? - gvvR("batteryStemSquareW")/2 + gvvR("batteryClipSolidW") / 2 + gvvR("batteryStemClearance") +8 :
     name=="batteryClipLeftY"        ? -gvvR("batteryStemSquareH")/2 +  gvvR("batteryStemClearance") -  gvvR("batteryClipExtra") :    
-    name=="batteryClipLeftZ"        ? gvvR("batteryClipLeftSolidD") - 11 :    
+    name=="batteryClipLeftZ"        ? gvvR("batteryClipLeftSolidD") - 13 :    
     name=="batteryClipLeftRotX"     ? 0 :    
     name=="batteryClipLeftRotY"     ? 0 :    
     name=="batteryClipLeftRotZ"     ? 0 :    
@@ -395,7 +395,7 @@ name=="TEST" ? "TEST":
     name=="batteryClipSolidD"       ? 25 :
     name=="batteryClipSolidX"       ? 0:
     name=="batteryClipSolidY"       ? - 2 :
-    name=="batteryClipSolidZ"       ? gvvR("batteryClipSolidD")-2 :
+    name=="batteryClipSolidZ"       ? gvvR("batteryClipSolidD")-4 :
     name=="batteryClipSolidRadius"      ? 0 :
     name=="batteryClipSolidRotX"        ? 0 :
     name=="batteryClipSolidRotY"        ? 0 :
@@ -411,7 +411,7 @@ name=="TEST" ? "TEST":
 //////batteryClipLeftNegative dimensions
     name=="batteryClipNegativeW"        ? 7.5 :
     name=="batteryClipNegativeH"        ? 1.25 :
-    name=="batteryClipNegativeD"        ? 10.5 :
+    name=="batteryClipNegativeD"        ? 10.5 +2:
     name=="batteryClipNegativeX"        ? gvvR("batteryClipSolidX") :
     name=="batteryClipNegativeY"        ? gvvR("batteryClipSolidY") - 1:
     name=="batteryClipNegativeZ"        ? gvvR("batteryClipSolidZ") - gvvR("batteryClipSolidD") + gvvR("batteryClipNegativeD") :
